@@ -32,8 +32,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_executable(scalc
-        app/scalc.cpp
-        app/scalc.hpp)
+        app/scalc.cpp)
 
 target_link_libraries(scalc eval_library pthread)
 
