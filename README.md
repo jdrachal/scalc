@@ -24,7 +24,7 @@ arguments of operator
 #### Input data
 Input should be provided argument by argument with spaces between.
 It's allowed to provide arguments
-{"[", "]", "<file_path>", "GR", "LE", "EQ", "<integer>"}
+{"[", "]", "<file_path>", "GR", "LE", "EQ", "<integer_value>"}
 
 #### Return data
 * sorted unique positive integers, one integer in a line
