@@ -29,6 +29,9 @@ namespace expression {
     }
 
     std::set<uint32_t> Expression::evaluateExpression(const std::vector<std::string> &input) {
+        if(input.empty()){
+            throw std::invalid_argument("Wrong expression given!");
+        }
         arg_iterator_ = input.begin() + 1;
         initialize();
         waitForWorkers();
@@ -41,7 +44,6 @@ namespace expression {
 
         // Wait for all threads (nested expressions and file reads)
         waitForWorkers();
-
 
         // Go through all files and compute all integer occurrences by multiplication
         // Add occurrences of file with the same path to all integer keys it contains
@@ -75,7 +77,6 @@ namespace expression {
         // Compare all integer occurrences with given number
         for (const auto&[key, value]: occurrences) {
             switch (OperatorType.at(operator_)) {
-                using enum en_operators;
                 case EQ:
                     if (value == number_) {
                         temp_set.insert(key);
@@ -104,7 +105,6 @@ namespace expression {
         if (OperatorType.contains(arg)) {
             // Expression case
             switch (OperatorType.find(arg)->second) {
-                using enum en_operators;
                 case OP:
                     // Expression open parenthesis - initialize new Expression parser
                     ex = std::make_shared<expression::Expression>(arg_iterator_, fm_);

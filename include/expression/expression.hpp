@@ -5,6 +5,7 @@
 #ifndef SCALC_EXPRESSION_H
 #define SCALC_EXPRESSION_H
 
+#include <pthread.h>
 #include <unordered_map>
 #include <string>
 #include <vector>

@@ -5,6 +5,10 @@
 
 int main(int argc, char *argv[]) {
 
+    if(argc <= 1){
+        std::cerr << "No input given!" << std::endl;
+        return 0;
+    }
     std::vector<std::string> args(argv + 1, argv + argc);
 
     try {

@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.16)
 
 project(scalc)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} \
+        -lpthread\
         -static-libgcc \
-        -static-libstdc++")
+        -static-libstdc++\
+")
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -26,13 +28,14 @@ add_library(eval_library STATIC
         include/expression/expression.hpp
         )
 
-
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_executable(scalc
         app/scalc.cpp
         app/scalc.hpp)
 
-target_link_libraries(scalc eval_library)
+target_link_libraries(scalc eval_library pthread)
 
 add_subdirectory(gtest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
