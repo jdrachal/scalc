@@ -1,0 +1,1 @@
+[ LE 5 [ EQ 3 ./files/data/a.txt ./files/data/a.txt ./files/data/b.txt ] [ EQ 3 ./files/data/a.txt ./files/data/a.txt ./files/data/b.txt ] [ EQ 3 ./files/data/a.txt ./files/data/a.txt ./files/data/b.txt ] ]

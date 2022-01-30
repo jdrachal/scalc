@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+shell -> scalc: Input args
+
+scalc -> Expression: Create Expression request
+scalc <-- Expression: Create Expression response
+scalc -> Expression: Expression initialize response
+
+
+loop Until ']' arg found
+
+    alt '[' expression
+        ref over Expression: Create expression ex
+        group Expression thread
+        ref over Expression: ex EvaluateExpression - wait for all threads
+        end
+
+    else file expression
+        group File read thread
+        Expression -> FileManager: Read file Request (thread)
+        FileManager -> FileManager: Read file Request (thread)
+    end
+
+end
+
+
+scalc <-- Expression: Expression initialize request
+scalc -> Expression: Evaluate expression request
+Expression -> Expression: Evaluate wait for all threads
+scalc <-- Expression: Evaluated integer set response
+
+shell <-- scalc: Output data
+@enduml

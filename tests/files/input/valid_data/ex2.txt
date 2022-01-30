@@ -1,0 +1,1 @@
+[ EQ 3 ./files/data/a.txt [ EQ 3 ./files/data/d.txt ./files/data/d.txt ./files/data/d.txt ] ]
